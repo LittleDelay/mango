@@ -9,27 +9,16 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <!--模块（有时称作子项目） 被构建成项目的一部分。列出的每个模块元素是指向该模块的目录的相对路径 -->
+  <!--模块（有时称作子项目） -->
   <modules>
     <module>mango-core</module>
   </modules>
 
-  <!--以值替代名称，Properties可以在整个POM中使用，也可以作为触发条件（见settings.xml配置文件里activation元素的说明）。格式是<name>value</name>。 -->
+  <!--以值替代名称，Properties可以在整个POM中使用，也可以作为触发条件。 -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-
-    <!-- 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 -->
-    <!-- maven -->
-    <!--<maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-    <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-    <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
-    <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
-    <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
-    <spring-boot-maven-plugin.version>2.3.0.RELEASE</spring-boot-maven-plugin.version>-->
 
     <!-- spring-cloud-->
     <spring-cloud-alibaba-dependencies.version>2.2.1.RELEASE</spring-cloud-alibaba-dependencies.version>
@@ -37,6 +26,7 @@
     <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
     <spring-webmvc.version>5.2.10.RELEASE</spring-webmvc.version>
     <servlet-api.version>4.0.1</servlet-api.version>
+    <knife4j.version>2.0.3</knife4j.version>
 
     <!-- common组件-->
     <commons-lang3.version>3.9</commons-lang3.version>
@@ -46,7 +36,19 @@
     <spring-security-rsa.version>1.0.7.RELEASE</spring-security-rsa.version>
     <spring-data-commos.version>2.2.6.RELEASE</spring-data-commos.version>
 
+    <!-- datasource-->
+    <mybatis-plus.version>3.3.2</mybatis-plus.version>
+    <pagehelper-spring-boot-starter.version>1.2.13</pagehelper-spring-boot-starter.version>
+    <p6spy.version>3.9.0</p6spy.version>
+
+    <!-- google-->
+    <hutool.version>5.4.4</hutool.version>
+
+    <!-- redisson -->
+    <redisson-spring-boot-starter.version>3.12.4</redisson-spring-boot-starter.version>
+
     <lombok.version>1.18.8</lombok.version>
+    <fastjson.version>1.2.72</fastjson.version>
 
   </properties>
 
@@ -159,38 +161,40 @@
 
   <build>
     <finalName>mango</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+
+    <!--这个元素描述了项目相关的所有资源路径列表，例如和项目相关的属性文件，这些资源被包含在最终的打包文件里。 -->
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
   </build>
+
+  <!-- 指定maven编译方式为jdk1.8版本 -->
+  <profiles>
+    <profile>
+      <id>jdk-1.8</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <jdk>${java.version}</jdk>
+      </activation>
+      <properties>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
+      </properties>
+    </profile>
+  </profiles>
 </project>
