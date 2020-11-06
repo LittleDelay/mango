@@ -3,33 +3,33 @@ package com.mango.core.bean.request;
 /**
  * description: Api请求基类
  *
- * @Author : xs.Liu
- * @Date: 2020-11-03 10:37
+ * @author : xs.Liu
+ * @date: 2020-11-03
  */
 public class ApiRequest {
 
     /**
-     * 当前页.
+     * 当前页
      */
     protected Integer page = 1;
 
     /**
-     * 每页记录数.
+     * 每页记录数
      */
     protected Integer limit = 10;
 
     /**
-     * 通用ID.
+     * 通用ID
      */
     protected Long id;
 
     /**
-     * 查询开始时间.
+     * 查询开始时间
      */
     protected String queryStartTime;
 
     /**
-     * 查询结束时间.
+     * 查询结束时间
      */
     protected String queryEndTime;
 

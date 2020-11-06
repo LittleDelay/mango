@@ -3,18 +3,18 @@ package com.mango.core.bean.response;
 /**
  * description: Api返回结果
  *
- * @Author : xs.Liu
- * @Date: 2020-11-03 10:39
+ * @author : xs.Liu
+ * @date: 2020-11-03
  */
 public class ApiResponse<T> {
 
     /**
-     * 执行成功.
+     * 执行成功
      */
     public static final Integer OK = 200;
 
     /**
-     * 内部异常.
+     * 内部异常
      */
     public static final Integer INNER_ERROR = 500;
 

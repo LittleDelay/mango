@@ -1,10 +1,10 @@
 package com.mango.core.bean.response;
 
 /**
- * description: 成功操作返回的数据模型定义.
+ * description: 成功操作返回的数据模型定义
  *
- * @Author : xs.Liu
- * @Date: 2020-11-03 14:39
+ * @author : xs.Liu
+ * @date: 2020-11-03
  */
 public class SuccessResponseData<T> extends ApiResponse {
 

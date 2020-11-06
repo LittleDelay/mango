@@ -1,25 +1,28 @@
 package com.mango.core.constant;
 
+import cn.hutool.http.HttpStatus;
 import com.mango.core.exception.BusinessException;
 
 /**
- * @Author : xs.Liu
- * @Date: 2020-11-03 15:22
+ * @author : xs.Liu
+ * @date: 2020-11-03
  */
 public enum BizExceptionEnum {
 
-
     /**
-     * 通用异常.
+     * 通用异常
      */
     SERVER_ERROR(1000, "服务器异常"),
     REQUEST_NULL(1001, "请求参数有错误"),
     SESSION_TIMEOUT(1002, "会话超时"),
     PARAM_INVALID(1003,"参数无效"),
     PARAM_MISS(1004,"参数丢失"),
+    PARAM_FLOW(1005, "热点参数访问限制，请稍后再试"),
+    REQ_BLACKLIST(1006, "IP已被禁止，请稍后再试"),
+    REQ_LIMIT(1007, "单位时间内请求次数过多，请稍后再试"),
 
     /**
-     * 上链异常.
+     * 上链异常
      */
     CHAINCODE_ERROR(1500,"上链API访问异常"),
     CHAINCODE_SAVE(1501,"保存上链数据异常"),

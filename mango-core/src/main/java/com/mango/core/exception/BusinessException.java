@@ -3,25 +3,26 @@ package com.mango.core.exception;
 import com.mango.core.constant.BizExceptionEnum;
 
 /**
- * @Author : xs.Liu
- * @Date: 2020-11-03 15:25
+ * @author : xs.Liu
+ * @date: 2020-11-03
  */
 public class BusinessException extends RuntimeException {
 
     /**
-     * serialVersionUID.
+     * serialVersionUID
      */
     private static final long serialVersionUID = -3193567924568372098L;
+
     /**
-     * 错误码.
+     * 错误码
      */
     protected int errCode;
     /**
-     * 错误消息.
+     * 错误消息
      */
     protected String errMsg;
     /**
-     * 错误详细描述.
+     * 错误详细描述
      */
     protected String errDetail;
 
@@ -51,7 +52,7 @@ public class BusinessException extends RuntimeException {
     }
 
     /**
-     * 抛出系统异常.
+     * 抛出系统异常
      * @param t
      */
     public BusinessException(Throwable t) {
@@ -61,7 +62,7 @@ public class BusinessException extends RuntimeException {
     }
 
     /**
-     * getErrCode:返回错误码. <br/>
+     * getErrCode:返回错误码
      * @return
      */
     public int getErrCode() {
@@ -69,7 +70,7 @@ public class BusinessException extends RuntimeException {
     }
 
     /**
-     * getErrMsg:返回错误消息. <br/>
+     * getErrMsg:返回错误消息
      * @return
      */
     public String getErrMsg() {
@@ -77,7 +78,7 @@ public class BusinessException extends RuntimeException {
     }
 
     /**
-     * getErrDetail:返回错误详情. <br/>
+     * getErrDetail:返回错误详情
      * @return
      */
     public String getErrDetail() {

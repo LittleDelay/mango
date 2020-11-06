@@ -1,10 +1,10 @@
 package com.mango.core.bean.response;
 
 /**
- * description: API返回结果组装工具.
+ * description: API返回结果组装工具
  *
- * @Author : xs.Liu
- * @Date: 2020-11-03 14:38
+ * @author : xs.Liu
+ * @date: 2020-11-03
  */
 public class ResponseKit {
 
