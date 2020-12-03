@@ -11,16 +11,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-/**
- *  @{# HttpContext.java Create on 2019年9月23日 下午2:12:29
- * <p>
- *
- * </p>
- * @author <a href="mailto:baiyujie@gmail.com">baiyujie</a>
- * @version v 1.0.0
- */
 
+/**
+ * @author : xs.Liu
+ * @date: 2020-12-01
+ */
 public class HttpContext {
+
+	private static String UNKNOWN = "unKnown";
 
 	/**
 	 * 获取IP.
@@ -29,7 +27,7 @@ public class HttpContext {
 	public static String getIp() {
 		HttpServletRequest request = HttpContext.getRequest();
 		String ip = request.getHeader("X-Forwarded-For");
-		if (StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)) {
+		if (StringUtils.isNotEmpty(ip) && !UNKNOWN.equalsIgnoreCase(ip)) {
 			// 多次反向代理后会有多个ip值,第一个ip才是真实ip
 			int index = ip.indexOf(",");
 			if (index != -1) {
@@ -39,7 +37,7 @@ public class HttpContext {
 			}
 		}
 		ip = request.getHeader("X-Real-IP");
-		if (StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)) {
+		if (StringUtils.isNotEmpty(ip) && ! UNKNOWN.equalsIgnoreCase(ip)) {
 			return ip;
 		}
 		return request.getRemoteAddr();
@@ -77,9 +75,8 @@ public class HttpContext {
 	 *
 	 * @return
 	 */
-	@SuppressWarnings("rawtypes")
 	public static Map<String, String> getRequestParameters() {
-		HashMap<String, String> values = new HashMap<>();
+		HashMap<String, String> values = new HashMap<>(8);
 		HttpServletRequest request = HttpContext.getRequest();
 		if (request == null) {
 			return values;
